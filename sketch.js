@@ -101,10 +101,11 @@ function draw() {
 	if(packageSprite.isTouching(laser))
 	{
 		reset();
+		boxState = "inSide";
 	}
 
 	// From here 
-  if(boxState = "inSide"){
+  if(boxState == "inSide"){
 	  packageBody.position.x= helicopterSprite.x; 
 	  packageBody.position.y= helicopterSprite.y ; 
 	}
@@ -126,12 +127,15 @@ function draw() {
 	text("The Medical Supplies are in Helicopter", 80, 100);  
   }
 
-//   if (keyDown("down")) {
-// }
+  if (keyDown("down")) {
+
+	  boxState = "outSide";
+}
 
 
-translate(-helicopterSprite.x+400, -helicopterSprite.y+220);
-	keyPressed();
+
+	// translate(-helicopterSprite.x+400, -helicopterSprite.y+220);
+	// keyPressed();
 	drawSprites();
   
   
@@ -145,7 +149,6 @@ function keyPressed() {
 	if(keyCode === DOWN_ARROW) 
 	{
 		Matter.Body.setStatic(packageBody,false);
-		boxState = "outSide";
 }
 
   else if (keyCode === RIGHT_ARROW) {
